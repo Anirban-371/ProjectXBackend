@@ -1,5 +1,4 @@
-package io.projectX.starterAPIController;
-import java.util.List;
+package com.projectX.RegistrationController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,8 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.projectX.CustomerDetails.CustomerDetailsRequest;
-import io.projectX.customer.CustomerService;
+import com.projectX.Customer.Request.CustomerDetailsRequest;
+import com.projectX.Customer.Response.CustomerDetailsResponse;
+import com.projectX.CustomerService.CustomerService;
+
 
 @RestController
 public class RegisterController {
@@ -17,28 +18,40 @@ public class RegisterController {
 	@Autowired
 	private CustomerService customerService; //Injecting CustomerService service into the variable customerService
 	
-	@RequestMapping("/topics")
-	public List<CustomerDetailsRequest> getAllTopics() {
+	@RequestMapping("/")
+	public String get() {
+		//@RestController will automatically convert to JSON
+		System.out.println("Inside method");
+		return "inisde get";
+	}
+	
+	@RequestMapping("/allCustomers")
+	public CustomerDetailsResponse getAllCustomers() {
 		//@RestController will automatically convert to JSON
 		return customerService.getCustomerDetails();
 	}
 	
+	/*Individual Customer Retrieval*/
 	@RequestMapping("/customer/{id}")
-	public CustomerDetailsRequest getCustomer(@PathVariable String id) {
+	public CustomerDetailsResponse getCustomer(@PathVariable String id) {
 		return customerService.getCustomer(id);
 	}
 	
+	/*Adding Customer*/
 	@RequestMapping(method= RequestMethod.POST, value="/customer") 
-	public void addCustomer(CustomerDetailsRequest customer) {
+	public void addCustomer(@RequestBody CustomerDetailsRequest customer) {
 		System.out.println("Inside addCustomer method");
 		customerService.addCustomer(customer);
 	}
 	
+	/*Update Particular Customer*/
 	@RequestMapping(method= RequestMethod.PUT, value="/customer/{id}") 
 	public void updateCustomer(@RequestBody CustomerDetailsRequest customer,@PathVariable String id) {
 		System.out.println("Inside addCustomer method");
 		customerService.updateCustomer(id, customer);
 	}
+	
+	/*Delete particular customer*/
 	@RequestMapping(method= RequestMethod.DELETE, value="/customer/{id}") 
 	public void deleteCustomer(@PathVariable String id) {
 		System.out.println("Inside deleteCustomer method");

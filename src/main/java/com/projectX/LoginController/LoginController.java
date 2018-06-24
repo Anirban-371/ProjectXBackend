@@ -1,4 +1,4 @@
-package io.projectX.starterAPIController;
+package com.projectX.LoginController;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

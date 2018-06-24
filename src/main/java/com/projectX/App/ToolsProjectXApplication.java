@@ -1,4 +1,4 @@
-package com.projectX.app;
+package com.projectX.App;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,9 +6,11 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {
-		"io.projectX.starterAPIController",
-		"io.projectX.customer",
-		"com.projectX.repository.CustomerRepository"
+		"com.projectX.RegistrationController",
+		"com.projectX.LoginController",
+		"com.projectX.CustomerRepository",
+		"com.projectX.CustomerService",
+		"com.projectX.CustomerServiceImpl"
 })
 public class ToolsProjectXApplication {
 
