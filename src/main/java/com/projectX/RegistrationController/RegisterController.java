@@ -21,7 +21,7 @@ public class RegisterController {
 	@RequestMapping("/allCustomers")
 	public CustomerDetailsResponse getAllCustomers() {
 		//@RestController will automatically convert to JSON
-		return customerService.getCustomerDetails();
+		return customerService.getAllCustomer();
 	}
 	
 	/*Individual Customer Retrieval*/

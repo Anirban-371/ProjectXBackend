@@ -24,7 +24,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	private CustomerRepository customerRepository;
 
-	public CustomerDetailsResponse getCustomerDetails() {
+	public CustomerDetailsResponse getAllCustomer() {
 		//return customerDetails;
 		CustomerDetailsResponse customerDetailsResponse =new CustomerDetailsResponse();
 		List<CustomerDetails> customerDetailsList=new ArrayList<CustomerDetails>();

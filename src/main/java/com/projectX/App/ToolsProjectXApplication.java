@@ -10,7 +10,11 @@ import org.springframework.context.annotation.ComponentScan;
 		"com.projectX.LoginController",
 		"com.projectX.CustomerRepository",
 		"com.projectX.CustomerService",
-		"com.projectX.CustomerServiceImpl"
+		"com.projectX.CustomerServiceImpl",
+		"com.projectX.ProductController",
+		"com.projectX.ProductRepository",
+		"com.projectX.ProductService",
+		"com.projectX.ProductServiceImpl"
 })
 public class ToolsProjectXApplication {
 

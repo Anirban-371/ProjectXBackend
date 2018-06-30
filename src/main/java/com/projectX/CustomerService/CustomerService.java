@@ -9,7 +9,7 @@ import com.projectX.Customer.Response.CustomerDetailsResponse;
 @Service
 public interface CustomerService {
 
-	CustomerDetailsResponse getCustomerDetails();
+	CustomerDetailsResponse getAllCustomer();
 
 	CustomerDetailsResponse getCustomer(String id);
 
