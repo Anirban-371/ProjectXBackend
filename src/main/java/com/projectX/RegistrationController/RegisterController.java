@@ -18,13 +18,6 @@ public class RegisterController {
 	@Autowired
 	private CustomerService customerService; //Injecting CustomerService service into the variable customerService
 	
-	@RequestMapping("/")
-	public String get() {
-		//@RestController will automatically convert to JSON
-		System.out.println("Inside method");
-		return "inisde get";
-	}
-	
 	@RequestMapping("/allCustomers")
 	public CustomerDetailsResponse getAllCustomers() {
 		//@RestController will automatically convert to JSON
@@ -40,7 +33,7 @@ public class RegisterController {
 	/*Adding Customer*/
 	@RequestMapping(method= RequestMethod.POST, value="/customer") 
 	public void addCustomer(@RequestBody CustomerDetailsRequest customer) {
-		System.out.println("Inside addCustomer method");
+		System.out.println("Inside addCustomer method::"+ customer);
 		customerService.addCustomer(customer);
 	}
 	
@@ -52,9 +45,9 @@ public class RegisterController {
 	}
 	
 	/*Delete particular customer*/
-	@RequestMapping(method= RequestMethod.DELETE, value="/customer/{id}") 
-	public void deleteCustomer(@PathVariable String id) {
+	@RequestMapping(method= RequestMethod.DELETE, value="/deletecustomer") 
+	public void deleteCustomer(@RequestBody CustomerDetailsRequest customer) {
 		System.out.println("Inside deleteCustomer method");
-		customerService.deleteCustomer(id);
+		customerService.deleteCustomer(customer);
 	}
 }

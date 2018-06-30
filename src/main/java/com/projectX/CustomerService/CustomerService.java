@@ -17,6 +17,8 @@ public interface CustomerService {
 
 	void updateCustomer(String id, CustomerDetailsRequest customer);
 
-	void deleteCustomer(String id);
+	void deleteCustomer(CustomerDetailsRequest customer);
+
+	boolean loginCustomer(CustomerDetailsRequest customer);
 
 }

@@ -7,7 +7,7 @@ import com.projectX.Customer.CustomerDetails;
 public class CustomerDetailsResponse {
 	
 	List<CustomerDetails> customerDetailsList;
-
+	
 	public List<CustomerDetails> getCustomerDetailsList() {
 		return customerDetailsList;
 	}
@@ -24,6 +24,8 @@ public class CustomerDetailsResponse {
 		builder.append("]");
 		return builder.toString();
 	}
+
+
 	
 	
 }

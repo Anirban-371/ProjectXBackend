@@ -13,6 +13,10 @@ public class CustomerDetails {
 	private String password;
 	private String pincode;
 	private String contact;
+	private String createdTime;
+	private String createdBy;
+	private String updatedTime;
+	private String updatedBy;
 	
 	public CustomerDetails() {}
 
@@ -64,6 +68,38 @@ public class CustomerDetails {
 		this.contact = contact;
 	}
 
+	public String getCreatedTime() {
+		return createdTime;
+	}
+
+	public void setCreatedTime(String createdTime) {
+		this.createdTime = createdTime;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getUpdatedTime() {
+		return updatedTime;
+	}
+
+	public void setUpdatedTime(String updatedTime) {
+		this.updatedTime = updatedTime;
+	}
+
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -79,9 +115,19 @@ public class CustomerDetails {
 		builder.append(pincode);
 		builder.append(", contact=");
 		builder.append(contact);
+		builder.append(", createdTime=");
+		builder.append(createdTime);
+		builder.append(", createdBy=");
+		builder.append(createdBy);
+		builder.append(", updatedTime=");
+		builder.append(updatedTime);
+		builder.append(", updatedBy=");
+		builder.append(updatedBy);
 		builder.append("]");
 		return builder.toString();
 	}
+
+	
 
 	
 }
