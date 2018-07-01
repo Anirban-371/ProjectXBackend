@@ -48,5 +48,13 @@ public class ProductController {
 		System.out.println("Inside deleteProduct method");
 		productService.deleteProduct(product);
 	}
+	
+	/*Search particular product*/
+	// Need to change the search from product name to product tags
+	@RequestMapping(method= RequestMethod.GET, value="/productname/{itemname}") 
+	public ProductResponse searchProduct(@PathVariable String itemname) {
+		System.out.println("Inside searchProduct method");
+		return productService.searchProduct(itemname);
+	}
 
 }

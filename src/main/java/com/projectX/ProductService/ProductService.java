@@ -17,5 +17,7 @@ public interface ProductService {
 
 	void deleteProduct(ProductRequest product);
 
+	ProductResponse searchProduct(String itemname);
+
 
 }

@@ -6,13 +6,16 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.expression.spel.ast.BooleanLiteral;
 import org.springframework.stereotype.Service;
 
 import com.projectX.ProductRepository.ProductRepository;
 import com.projectX.Product.Product;
+import com.projectX.Product.QProduct;
 import com.projectX.Product.Request.ProductRequest;
 import com.projectX.Product.Response.ProductResponse;
 import com.projectX.ProductService.ProductService;
+import com.querydsl.core.types.dsl.BooleanExpression;
 
 @EnableMongoRepositories(basePackageClasses = ProductRepository.class)
 @Service
@@ -58,6 +61,16 @@ public class ProductServiceImpl implements ProductService {
 	public void deleteProduct(ProductRequest product) {
 		productRepository.delete(product.getProduct());
 		
+	}
+
+	@Override
+	public ProductResponse searchProduct(String itemname) {
+		ProductResponse productResponse=new ProductResponse();
+		QProduct qProduct = new QProduct("Product");
+		BooleanExpression filterbyname = qProduct.productDisplayName.contains(itemname);
+		List<Product> productList = (List<Product>) this.productRepository.findAll(filterbyname);
+		productResponse.setProductList(productList);
+		return productResponse;
 	}
 	
 
