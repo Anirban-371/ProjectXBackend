@@ -12,11 +12,13 @@ public class CustomerDetails {
 	private String email;
 	private String password;
 	private String pincode;
+	private String loginMedium;
 	private String contact;
 	private String createdTime;
 	private String createdBy;
 	private String updatedTime;
 	private String updatedBy;
+	private String image;
 	
 	public CustomerDetails() {}
 
@@ -98,6 +100,20 @@ public class CustomerDetails {
 
 	public void setUpdatedBy(String updatedBy) {
 		this.updatedBy = updatedBy;
+	}
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public String getLoginMedium() {
+		return loginMedium;
+	}
+
+	public void setLoginMedium(String loginMedium) {
+		this.loginMedium = loginMedium;
 	}
 
 	@Override

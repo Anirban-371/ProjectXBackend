@@ -3,6 +3,7 @@ package com.projectX.CustomerService;
 
 import org.springframework.stereotype.Service;
 
+import com.projectX.Customer.CustomerDetails;
 import com.projectX.Customer.Request.CustomerDetailsRequest;
 import com.projectX.Customer.Response.CustomerDetailsResponse;
 
@@ -19,6 +20,6 @@ public interface CustomerService {
 
 	void deleteCustomer(CustomerDetailsRequest customer);
 
-	boolean loginCustomer(CustomerDetailsRequest customer);
+	CustomerDetailsResponse loginCustomer(CustomerDetailsRequest customer);
 
 }

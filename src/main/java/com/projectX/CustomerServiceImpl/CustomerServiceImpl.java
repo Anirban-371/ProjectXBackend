@@ -61,14 +61,36 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public boolean loginCustomer(CustomerDetailsRequest customer) {
-		List<CustomerDetails> customerDetailsList =  customerRepository.findByName(customer.getCustomerDetails().getName());
-		if(customerDetailsList.get(0).getPassword().equals(customer.getCustomerDetails().getPassword())) {
-			return true;
-		}
-		return false;
+	public CustomerDetailsResponse loginCustomer(CustomerDetailsRequest customer) {
+		CustomerDetailsResponse customerDetailsResponse=new CustomerDetailsResponse();
+		CustomerDetails customerDet =customer.getCustomerDetails();
+		switch(customerDet.getLoginMedium().toLowerCase()) {
+			case "facebook":
+				 CustomerDetails customer_Login = fbLogin(customer);
+				 if(customer_Login==null)
+					 return getCustomer(customerDet.getId());
+				 customerDetailsResponse.setCustomerDetailsList(new ArrayList<CustomerDetails>(Arrays.asList(customer_Login)));
+				 return customerDetailsResponse;
+			default:
+				List<CustomerDetails> customerDetailsList =  customerRepository.findByEmail(customerDet.getEmail());		
+				if(customerDetailsList.size()> 0 && customerDetailsList.get(0).getPassword().equals(customerDet.getPassword())) {	
+					customerDetailsResponse.setCustomerDetailsList(customerDetailsList);
+					return customerDetailsResponse;
+				}				
+		}		
+		return null;
 	}
 	
+	public CustomerDetails fbLogin(CustomerDetailsRequest customerDet) {
+		Optional<CustomerDetails> customerDetailsList =  customerRepository.findById(customerDet.getCustomerDetails().getId());
+		if(customerDetailsList.isPresent()) {
+			return customerDetailsList.get();
+		}else {
+			addCustomer(customerDet);
+			return null;
+		}
+		
+	}
 	
 
 	
