@@ -35,7 +35,7 @@ public class ToolsProjectXApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/*").allowedOrigins("https://localhost:4200").allowCredentials(true);
+                registry.addMapping("/*").allowedOrigins("https://localhost:4200","http://localhost:4200").allowCredentials(true);
             }
         };
     }

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projectX.Customer.Request.CustomerDetailsRequest;
@@ -51,8 +52,8 @@ public class ProductController {
 	
 	/*Search particular product*/
 	// Need to change the search from product name to product tags
-	@RequestMapping(method= RequestMethod.GET, value="/productname/{itemname}") 
-	public ProductResponse searchProduct(@PathVariable String itemname) {
+	@RequestMapping(method= RequestMethod.POST, value="/productname") 
+	public ProductResponse searchProduct(@RequestParam("itemname") String itemname) {
 		System.out.println("Inside searchProduct method");
 		return productService.searchProduct(itemname);
 	}
