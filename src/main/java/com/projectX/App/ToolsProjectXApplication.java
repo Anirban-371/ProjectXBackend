@@ -12,13 +12,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @ComponentScan(basePackages = {
 		"com.projectX.RegistrationController",
 		"com.projectX.LoginController",
+		"com.projectX.AdminRepository",
 		"com.projectX.CustomerRepository",
 		"com.projectX.CustomerService",
 		"com.projectX.CustomerServiceImpl",
 		"com.projectX.ProductController",
 		"com.projectX.ProductRepository",
 		"com.projectX.ProductService",
-		"com.projectX.ProductServiceImpl"
+		"com.projectX.ProductServiceImpl",
+		"com.projectX.AdminController",
+		"com.projectX.AdminService",
+		"com.projectX.AdminServiceImpl",
+		"com.projectX.AdminRepository;"
 })
 public class ToolsProjectXApplication {
 

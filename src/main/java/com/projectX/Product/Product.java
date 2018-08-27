@@ -8,22 +8,22 @@ public class Product {
 	
 	@Id
 	String productId;
-	String productDisplayName;
+	String productCompany;
+	String productName;
 	String productOwnerId;
-	String productListId;
-	String quantity;
-	String productWeight;
-	String productSize;
-	String productArea;
-	String productExpiryDate;
-	String productCategory;
-	String productType;
-	String productDesc;
+	String productGroupId;
+	String productStatus;
+	String productCondition;
+	String purchaseYear;
+	String category;
+	int popularity;
+	int productQuantity;
+	double offpercent;
+	Specification specs;
 	String createdBy;
 	String createdDate;
 	String modifiedBy;
 	String modifiedDate;
-	
 	
 	public String getProductId() {
 		return productId;
@@ -31,11 +31,17 @@ public class Product {
 	public void setProductId(String productId) {
 		this.productId = productId;
 	}
-	public String getProductDisplayName() {
-		return productDisplayName;
+	public String getProductCompany() {
+		return productCompany;
 	}
-	public void setProductDisplayName(String productDisplayName) {
-		this.productDisplayName = productDisplayName;
+	public void setProductCompany(String productCompany) {
+		this.productCompany = productCompany;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 	public String getProductOwnerId() {
 		return productOwnerId;
@@ -43,59 +49,29 @@ public class Product {
 	public void setProductOwnerId(String productOwnerId) {
 		this.productOwnerId = productOwnerId;
 	}
-	public String getProductListId() {
-		return productListId;
+	public String getProductStatus() {
+		return productStatus;
 	}
-	public void setProductListId(String productListId) {
-		this.productListId = productListId;
+	public void setProductStatus(String productStatus) {
+		this.productStatus = productStatus;
 	}
-	public String getQuantity() {
-		return quantity;
+	public String getProductCondition() {
+		return productCondition;
 	}
-	public void setQuantity(String quantity) {
-		this.quantity = quantity;
+	public void setProductCondition(String productCondition) {
+		this.productCondition = productCondition;
 	}
-	public String getProductWeight() {
-		return productWeight;
+	public String getPurchaseYear() {
+		return purchaseYear;
 	}
-	public void setProductWeight(String productWeight) {
-		this.productWeight = productWeight;
+	public void setPurchaseYear(String purchaseYear) {
+		this.purchaseYear = purchaseYear;
 	}
-	public String getProductSize() {
-		return productSize;
+	public int getProductQuantity() {
+		return productQuantity;
 	}
-	public void setProductSize(String productSize) {
-		this.productSize = productSize;
-	}
-	public String getProductArea() {
-		return productArea;
-	}
-	public void setProductArea(String productArea) {
-		this.productArea = productArea;
-	}
-	public String getProductExpiryDate() {
-		return productExpiryDate;
-	}
-	public void setProductExpiryDate(String productExpiryDate) {
-		this.productExpiryDate = productExpiryDate;
-	}
-	public String getProductCategory() {
-		return productCategory;
-	}
-	public void setProductCategory(String productCategory) {
-		this.productCategory = productCategory;
-	}
-	public String getProductType() {
-		return productType;
-	}
-	public void setProductType(String productType) {
-		this.productType = productType;
-	}
-	public String getProductDesc() {
-		return productDesc;
-	}
-	public void setProductDesc(String productDesc) {
-		this.productDesc = productDesc;
+	public void setProductQuantity(int productQuantity) {
+		this.productQuantity = productQuantity;
 	}
 	public String getCreatedBy() {
 		return createdBy;
@@ -121,33 +97,66 @@ public class Product {
 	public void setModifiedDate(String modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
+	public String getProductGroupId() {
+		return productGroupId;
+	}
+	public void setProductGroupId(String productGroupId) {
+		this.productGroupId = productGroupId;
+	}
+	public Specification getSpecs() {
+		return specs;
+	}
+	public void setSpecs(Specification specs) {
+		this.specs = specs;
+	}
+	
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public int getPopularity() {
+		return popularity;
+	}
+	public void setPopularity(int popularity) {
+		this.popularity = popularity;
+	}
+	public double getOffpercent() {
+		return offpercent;
+	}
+	public void setOffpercent(double offpercent) {
+		this.offpercent = offpercent;
+	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Product [productId=");
 		builder.append(productId);
-		builder.append(", productDisplayName=");
-		builder.append(productDisplayName);
+		builder.append(", productCompany=");
+		builder.append(productCompany);
+		builder.append(", productName=");
+		builder.append(productName);
 		builder.append(", productOwnerId=");
 		builder.append(productOwnerId);
-		builder.append(", productListId=");
-		builder.append(productListId);
-		builder.append(", quantity=");
-		builder.append(quantity);
-		builder.append(", productWeight=");
-		builder.append(productWeight);
-		builder.append(", productSize=");
-		builder.append(productSize);
-		builder.append(", productArea=");
-		builder.append(productArea);
-		builder.append(", productExpiryDate=");
-		builder.append(productExpiryDate);
-		builder.append(", productCategory=");
-		builder.append(productCategory);
-		builder.append(", productType=");
-		builder.append(productType);
-		builder.append(", productDesc=");
-		builder.append(productDesc);
+		builder.append(", productGroupId=");
+		builder.append(productGroupId);
+		builder.append(", productStatus=");
+		builder.append(productStatus);
+		builder.append(", productCondition=");
+		builder.append(productCondition);
+		builder.append(", purchaseYear=");
+		builder.append(purchaseYear);
+		builder.append(", category=");
+		builder.append(category);
+		builder.append(", popularity=");
+		builder.append(popularity);
+		builder.append(", productQuantity=");
+		builder.append(productQuantity);
+		builder.append(", offpercent=");
+		builder.append(offpercent);
+		builder.append(", specs=");
+		builder.append(specs);
 		builder.append(", createdBy=");
 		builder.append(createdBy);
 		builder.append(", createdDate=");
@@ -158,7 +167,6 @@ public class Product {
 		builder.append(modifiedDate);
 		builder.append("]");
 		return builder.toString();
-	}
-	
+	}	
 	
 }
