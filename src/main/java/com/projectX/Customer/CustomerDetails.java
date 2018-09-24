@@ -1,5 +1,8 @@
 package com.projectX.Customer;
 
+import java.util.List;
+import java.util.Set;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,6 +17,7 @@ public class CustomerDetails {
 	private String pincode;
 	private String loginMedium;
 	private String contact;
+	private Set<Permissions> permissionsList;
 	private String createdTime;
 	private String createdBy;
 	private String updatedTime;
@@ -114,6 +118,13 @@ public class CustomerDetails {
 
 	public void setLoginMedium(String loginMedium) {
 		this.loginMedium = loginMedium;
+	}
+	public Set<Permissions> getPermissionsList() {
+		return permissionsList;
+	}
+
+	public void setPermissionsList(Set<Permissions> permissionsList) {
+		this.permissionsList = permissionsList;
 	}
 
 	@Override

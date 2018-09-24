@@ -2,17 +2,23 @@ package com.projectX.CustomerServiceImpl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.stereotype.Service;
 
 import com.projectX.Customer.CustomerDetails;
+import com.projectX.Customer.Permissions;
 import com.projectX.Customer.Request.CustomerDetailsRequest;
 import com.projectX.Customer.Response.CustomerDetailsResponse;
 import com.projectX.CustomerRepository.CustomerRepository;
+import com.projectX.CustomerRepository.PermissionsRepository;
+import com.projectX.CustomerRepository.RolesRepository;
 import com.projectX.CustomerService.CustomerService;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -23,6 +29,16 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	@Autowired
 	private CustomerRepository customerRepository;
+	
+/*	@Autowired
+	private RolesRepository rolesRepository;*/
+	
+	@Autowired
+	private PermissionsRepository permissionsRepository;
+	
+	CustomerServiceImpl(){
+		loadPermissions();
+	}
 
 	public CustomerDetailsResponse getAllCustomer() {
 		//return customerDetails;
@@ -48,6 +64,16 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	public void addCustomer(CustomerDetailsRequest customerDetailsRequest) {
+		CustomerDetails customerDetails= new CustomerDetails ();
+		customerDetails = customerDetailsRequest.getCustomerDetails();
+		Set<Permissions> permissionsSet = new HashSet<Permissions>();
+		Permissions permissions = new Permissions();
+		permissions.setName(Permissions.permissionList.CREATE.toString());
+		permissionsSet.add(permissions);
+		Permissions permissions1 = new Permissions();
+		permissions1.setName(Permissions.permissionList.UPDATE.toString());
+		permissionsSet.add(permissions1);
+		customerDetails.setPermissionsList(permissionsSet);
 		customerRepository.insert(customerDetailsRequest.getCustomerDetails());
 	}
 
@@ -90,6 +116,23 @@ public class CustomerServiceImpl implements CustomerService {
 			return null;
 		}
 		
+	}
+	
+	@Override
+    public CustomerDetails findByUsername(String username) {
+		List<CustomerDetails> customerDetailsList = this.customerRepository.findByEmail(username);
+		if(customerDetailsList.size() >0) {
+			return customerDetailsList.get(0);
+		}
+        return null;
+    }
+	
+	public void loadPermissions() {
+		/*Permissions permissionObject = new Permissions();
+		Stream.of(Permissions.permission.values()).forEach(permission ->{
+			permissionObject.setName(permission.toString());
+			permissionsRepository.save(permissionObject);	
+		});*/
 	}
 	
 

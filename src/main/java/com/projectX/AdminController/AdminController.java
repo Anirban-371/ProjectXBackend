@@ -2,6 +2,8 @@ package com.projectX.AdminController;
 
 import java.util.List;
 
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,12 +39,15 @@ public class AdminController {
 		return adminService.deleteAsset(assetID);
 	}
 	
+	@RequiresPermissions(value= {"READ","UPDATE"},logical = Logical.AND)
 	@RequestMapping(method= RequestMethod.GET, value="/getbanner")
 	public @ResponseBody AdminAssets getBanner(@RequestParam("zoneId") String zoneId){
 		System.out.println("Inside getBanner::"+ zoneId);
-		return null != adminService.getAsset(zoneId, "banner") && 
+		AdminAssets adminAssets =new AdminAssets();
+		adminAssets = null != adminService.getAsset(zoneId, "banner") && 
 				adminService.getAsset(zoneId, "banner").size() > 0 ? 
 				adminService.getAsset(zoneId, "banner").get(0): null;
+		return adminAssets;
 	}
 	@RequestMapping(method= RequestMethod.GET, value="/getpromotion")
 	public @ResponseBody List<AdminAssets>  getPromotion(@RequestParam("zoneId") String zoneId){

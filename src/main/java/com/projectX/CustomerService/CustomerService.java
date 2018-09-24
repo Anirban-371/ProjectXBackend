@@ -21,5 +21,6 @@ public interface CustomerService {
 	void deleteCustomer(CustomerDetailsRequest customer);
 
 	CustomerDetailsResponse loginCustomer(CustomerDetailsRequest customer);
-
+	
+	CustomerDetails findByUsername(String customername);
 }

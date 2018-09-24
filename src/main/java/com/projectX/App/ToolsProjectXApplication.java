@@ -1,5 +1,11 @@
 package com.projectX.App;
 
+/*import org.apache.shiro.cache.CacheManager;
+import org.apache.shiro.cache.MemoryConstrainedCacheManager;
+import org.apache.shiro.realm.Realm;
+import org.apache.shiro.realm.text.PropertiesRealm;
+import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
+import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;*/
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -9,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {
+/*@ComponentScan({
 		"com.projectX.RegistrationController",
 		"com.projectX.LoginController",
 		"com.projectX.AdminRepository",
@@ -23,8 +29,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 		"com.projectX.AdminController",
 		"com.projectX.AdminService",
 		"com.projectX.AdminServiceImpl",
-		"com.projectX.AdminRepository;"
-})
+		"com.projectX.AdminRepository"})*/
 public class ToolsProjectXApplication {
 
 	public static void main(String[] args) {
@@ -35,13 +40,4 @@ public class ToolsProjectXApplication {
 		SpringApplication.run(ToolsProjectXApplication.class, args);
 	}
 	
-	@Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/*").allowedOrigins("https://localhost:4200","http://localhost:4200").allowCredentials(true);
-            }
-        };
-    }
 }
