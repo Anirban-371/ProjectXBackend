@@ -60,7 +60,11 @@ import java.util.Map;
 		"com.projectX.AdminController",
 		"com.projectX.AdminService",
 		"com.projectX.AdminServiceImpl",
-		"com.projectX.AdminRepository"})
+		"com.projectX.AdminRepository",
+		"com.projectXNeighbour.Settings.Controller",
+		"com.projectXNeighbour.Settings.Service",
+		"com.projectXNeighbour.Settings.ServiceImpl",
+		"com.projectXNeighbour.Settings.AdminRepository"})
 public class WebConfig extends AdviceFilter {
 	
 	

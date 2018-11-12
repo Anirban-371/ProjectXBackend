@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.projectX.Customer.CustomerDetails;
 import com.projectX.Customer.Request.CustomerDetailsRequest;
 import com.projectX.Customer.Response.CustomerDetailsResponse;
 import com.projectX.CustomerService.CustomerService;
@@ -41,5 +42,10 @@ public class LoginController {
 		return false;
 		//return customerService.loginCustomer(customer);
 	}
+	@RequestMapping(method= RequestMethod.GET, value="/getCustomerDetails")
+	public @ResponseBody CustomerDetails getCustomerDetails(String username, String password) {
+		System.out.println("Inside login for customer ::"+ username+", password"+password);
+		return customerService.getCustomerDetails(username, password);
 	
+	}
 }

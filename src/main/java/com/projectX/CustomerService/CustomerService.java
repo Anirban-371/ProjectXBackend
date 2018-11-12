@@ -23,4 +23,8 @@ public interface CustomerService {
 	CustomerDetailsResponse loginCustomer(CustomerDetailsRequest customer);
 	
 	CustomerDetails findByUsername(String customername);
+	
+	CustomerDetails getCustomerDetails(String username, String password);
+	
+	
 }

@@ -121,7 +121,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
     public CustomerDetails findByUsername(String username) {
 		List<CustomerDetails> customerDetailsList = this.customerRepository.findByEmail(username);
-		if(customerDetailsList.size() >0) {
+		if(customerDetailsList.size() > 0) {
 			return customerDetailsList.get(0);
 		}
         return null;
@@ -135,6 +135,10 @@ public class CustomerServiceImpl implements CustomerService {
 		});*/
 	}
 	
+	@Override
+	public CustomerDetails getCustomerDetails(String username, String password) {
+		return findByUsername(username);
+	}
 
 	
 }
